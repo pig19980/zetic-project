@@ -13,8 +13,6 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # 라이브러리 경로 설정
 add_subdirectory(my-inference)
-# my-inference의 include 디렉토리도 포함
-include_directories(${PROJECT_SOURCE_DIR}/my-inference/include)
 
 # 실행 파일 컴파일
 add_executable(my-project src/main.cpp)
