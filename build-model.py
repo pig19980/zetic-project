@@ -16,9 +16,12 @@ class SimpleModel(nn.Module):
 
 
 model = SimpleModel()
-
 example_input = torch.randn(1, 3, 224, 224)
-
 traced_model = torch.jit.trace(model, example_input)
-
 traced_model.save("traced_model.pt")
+
+squeezenet_model = torch.hub.load('pytorch/vision:v0.10.0', 'squeezenet1_1', pretrained=True)
+model.eval()
+# example_input = torch.randn(1, 3, 244, 244)
+scripted_model = torch.jit.script(squeezenet_model, example_input)
+scripted_model.save("squeeznet_model.pt")
